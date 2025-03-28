@@ -5,23 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RegexLab - Interactive Regex Testing Tool</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   </head>
   <body>
     <div class="container">
-      <h1>RegexLab</h1>
+      <header>
+        <h1>
+          <i class="fas fa-code"></i> RegexLab <small>Regex Testing Companion</small>
+        </h1>
+      </header>
       <div class="card">
         <div class="tabs">
           <div class="tab-headers">
-            <button class="tab-header active" data-tab="test">Test Regex</button>
-            <button class="tab-header" data-tab="builder">Regex Builder</button>
+            <button class="tab-header active" data-tab="test">
+              <i class="fas fa-search"></i> Test Regex </button>
+            <button class="tab-header" data-tab="builder">
+              <i class="fas fa-puzzle-piece"></i> Regex Builder </button>
+            <button class="tab-header" data-tab="reference">
+              <i class="fas fa-book"></i> Quick Reference </button>
           </div>
           <div class="tab-content active" id="test-tab">
             <div class="input-group">
-              <label>Regular Expression</label>
+              <label>
+                <i class="fas fa-code"></i> Regular Expression </label>
               <div class="input-wrapper">
-                <input type="text" id="regex-pattern" placeholder="Enter regex pattern">
-                <select id="regex-presets">
-                  <option value="">Presets</option>
+                <input type="text" id="regex-pattern" placeholder="Enter regex pattern" required>
+                <select id="regex-presets" aria-label="Regex Presets">
+                  <option value="">Quick Presets</option>
                   <option value="email">Email</option>
                   <option value="phone">Phone Number</option>
                   <option value="url">URL</option>
@@ -30,24 +40,109 @@
               </div>
             </div>
             <div class="input-group">
-              <label>Regex Flags</label>
+              <label>
+                <i class="fas fa-flag"></i> Regex Flags </label>
               <input type="text" id="regex-flags" placeholder="Optional flags (g, i, m)">
             </div>
             <div class="input-group">
-              <label>Test String</label>
-              <input type="text" id="test-string" placeholder="Enter text to match against">
+              <label>
+                <i class="fas fa-paragraph"></i> Test String </label>
+              <input type="text" id="test-string" placeholder="Enter text to match against" required>
             </div>
-            <button id="test-regex-btn" class="primary-btn">Test Regex</button>
-            <div id="validation-error" class="error-message"></div>
+            <button id="test-regex-btn" class="primary-btn">
+              <i class="fas fa-play"></i> Run Test </button>
+            <div id="validation-error" class="error-message" aria-live="polite"></div>
             <div id="matches-container" class="matches-section">
-              <h3>Matches:</h3>
+              <h3>
+                <i class="fas fa-list"></i> Matches:
+              </h3>
               <div id="matches-list"></div>
             </div>
           </div>
           <div class="tab-content" id="builder-tab">
-            <div class="coming-soon"> Regex Builder Coming Soon! </div>
+            <div class="regex-builder">
+              <div class="input-group">
+                <label>
+                  <i class="fas fa-code"></i> Generated Regex </label>
+                <input type="text" id="generated-regex" placeholder="Your regex will appear here" readonly>
+              </div>
+              <div class="regex-builder-actions">
+                <button id="copy-regex-btn" class="primary-btn">
+                  <i class="fas fa-copy"></i> Copy Regex </button>
+                <button id="clear-regex-btn" class="primary-btn">
+                  <i class="fas fa-trash"></i> Clear </button>
+                <button id="show-repeat-modal" class="primary-btn">
+                  <i class="fas fa-redo"></i> Repeat </button>
+              </div>
+              <div class="builder-category">
+                <h4>
+                  <i class="fas fa-font"></i> Character Classes
+                </h4>
+                <div id="character-classes" class="builder-options-grid"></div>
+              </div>
+              <div class="custom-char-class">
+                <input type="text" id="custom-char-class" placeholder="Enter custom character class (e.g., a-zA-Z)">
+                <button id="custom-char-class-btn" class="primary-btn">Add</button>
+              </div>
+              <div class="builder-category">
+                <h4>
+                  <i class="fas fa-ruler"></i> Quantifiers
+                </h4>
+                <div id="quantifiers" class="builder-options-grid"></div>
+              </div>
+              <div class="builder-category">
+                <h4>
+                  <i class="fas fa-anchor"></i> Anchors & Groups
+                </h4>
+                <div id="anchors-groups" class="builder-options-grid"></div>
+              </div>
+            </div>
+          </div>
+          <div id="repeat-modal" class="repeat-modal">
+            <div class="repeat-modal-content">
+              <h3>Specify Repeat</h3>
+              <input type="text" id="repeat-input" placeholder="Example: 3 or 2,4">
+              <button id="repeat-confirm" class="primary-btn">Confirm</button>
+            </div>
+          </div>
+          <div class="tab-content" id="reference-tab">
+            <div class="reference-content">
+              <h3>
+                <i class="fas fa-book-open"></i> Regex Cheat Sheet
+              </h3>
+              <div class="reference-grid">
+                <div class="reference-item">
+                  <strong>^</strong> Start of string
+                </div>
+                <div class="reference-item">
+                  <strong>$</strong> End of string
+                </div>
+                <div class="reference-item">
+                  <strong>.</strong> Any character
+                </div>
+                <div class="reference-item">
+                  <strong>*</strong> 0 or more
+                </div>
+                <div class="reference-item">
+                  <strong>+</strong> 1 or more
+                </div>
+                <div class="reference-item">
+                  <strong>?</strong> 0 or 1
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+      <footer>
+        <p> Created with <i class="fas fa-heart"></i> by ThatSINEWAVE </p>
+      </footer>
+    </div>
+    <div id="repeat-modal" class="repeat-modal">
+      <div class="repeat-modal-content">
+        <h3>Specify Repeat</h3>
+        <input type="text" id="repeat-input" placeholder="Example: 3 or 2,4">
+        <button id="repeat-confirm" class="primary-btn">Confirm</button>
       </div>
     </div>
     <script src="script.js"></script>
