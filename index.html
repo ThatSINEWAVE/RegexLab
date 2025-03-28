@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegexLab - Interactive Regex Testing Tool</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>RegexLab</h1>
+      <div class="card">
+        <div class="tabs">
+          <div class="tab-headers">
+            <button class="tab-header active" data-tab="test">Test Regex</button>
+            <button class="tab-header" data-tab="builder">Regex Builder</button>
+          </div>
+          <div class="tab-content active" id="test-tab">
+            <div class="input-group">
+              <label>Regular Expression</label>
+              <div class="input-wrapper">
+                <input type="text" id="regex-pattern" placeholder="Enter regex pattern">
+                <select id="regex-presets">
+                  <option value="">Presets</option>
+                  <option value="email">Email</option>
+                  <option value="phone">Phone Number</option>
+                  <option value="url">URL</option>
+                  <option value="password">Strong Password</option>
+                </select>
+              </div>
+            </div>
+            <div class="input-group">
+              <label>Regex Flags</label>
+              <input type="text" id="regex-flags" placeholder="Optional flags (g, i, m)">
+            </div>
+            <div class="input-group">
+              <label>Test String</label>
+              <input type="text" id="test-string" placeholder="Enter text to match against">
+            </div>
+            <button id="test-regex-btn" class="primary-btn">Test Regex</button>
+            <div id="validation-error" class="error-message"></div>
+            <div id="matches-container" class="matches-section">
+              <h3>Matches:</h3>
+              <div id="matches-list"></div>
+            </div>
+          </div>
+          <div class="tab-content" id="builder-tab">
+            <div class="coming-soon"> Regex Builder Coming Soon! </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
